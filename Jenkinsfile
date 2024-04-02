@@ -1,7 +1,7 @@
 pipeline {
-    agent dev
+    agent { label 'dev' }
     environment {
-    DOCKERHUB_CREDENTIALS = credentials('mounika-dockerhub')
+    DOCKERHUB_CREDENTIALS = credentials('mounikaparchuri-dockerhub')
     }
     stages { 
         stage('SCM Checkout') {
@@ -9,7 +9,6 @@ pipeline {
             git 'https://github.com/MounikaParchuri/jenkins-tomcat-cicd.git'
             }
         }
-
         stage('Build docker image') {
             steps {  
                 sh 'docker build -t mounikaparchuri/tomcat-demo:$BUILD_NUMBER .'
@@ -25,8 +24,8 @@ pipeline {
                 sh 'docker push mounikaparchuri/tomcat-demo:$BUILD_NUMBER'
             }
         }
-}
-post {
+    }
+    post {
         always {
             sh 'docker logout'
         }

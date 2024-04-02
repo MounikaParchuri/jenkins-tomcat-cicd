@@ -19,8 +19,8 @@ CMD ["bash"]
 
 #MAINTAINER bhaskarndas@gmail.com
 
-
 WORKDIR /usr/local/tomcat/webapps
+COPY index.html .
 RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
 
 
