@@ -22,5 +22,4 @@ CMD ["bash"]
 WORKDIR /usr/local/tomcat/webapps
 COPY index.html .
 RUN curl -O -L https://github.com/bhaskarndas/sample-war/raw/main/sampletest.war
-
 CMD ["/usr/local/tomcat/bin/catalina.sh", "run"]
